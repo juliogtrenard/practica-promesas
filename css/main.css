@@ -27,14 +27,20 @@
   text-align: center;
 }
 
-.mainContainer section > div {
+.mainContainer section > .datos {
   width: 100%;
   height: 50px;
   border: 1px solid black;
   border-radius: 5px;
 }
 
-.mainContainer section > button {
+.contenedorBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainContainer section > div button {
   background-color: rgb(151, 255, 220);
   padding: 10px 15px;
   border-radius: 8px;
