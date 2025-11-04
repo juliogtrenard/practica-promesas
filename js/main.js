@@ -4,11 +4,16 @@
 const contenedorDatos = document.querySelector(".datos");
 const boton = document.querySelector(".btn");
 const usuario = {
+    id: 1,
   nombre: "Pepe",
   correo: "pepe@pepe.pepe",
 };
 
 boton.addEventListener("click", () => {
+  ejecutar();
+});
+
+const ejecutar = () => {
   setTimeout(() => {
     obtenerDatos()
       .then((respuesta) => {
@@ -18,7 +23,7 @@ boton.addEventListener("click", () => {
         pintarDatos(error);
       });
   }, 2000);
-});
+};
 
 const obtenerDatos = () => {
   const promise = new Promise((resolve, reject) => {
@@ -49,23 +54,20 @@ const eleminarDatos = () => {
 const contenedorDatos = document.querySelector(".datos");
 const boton = document.querySelector(".btn");
 const usuario = {
+  id: 1,
   nombre: "Pepe",
   correo: "pepe@pepe.pepe",
 };
 
 boton.addEventListener("click", () => {
-  setTimeout(() => {
-    tiempo()
-      .then((response) => pintarDatos(response))
-      .catch((error) => pintarDatos(error));
-  }, 2000);
+  ejecutar();
 });
 
 /**
  * @description Obtiene los datos del usuario
  * @returns {Promise<string>} Promesa con los datos del usuario
  */
-const tiempo = async () => {
+const retrasarTiempo = async () => {
   try {
     let datos = await obtenerDatos();
 
@@ -73,6 +75,14 @@ const tiempo = async () => {
   } catch (error) {
     throw error;
   }
+};
+
+const ejecutar = () => {
+  setTimeout(() => {
+    retrasarTiempo()
+      .then((response) => pintarDatos(response))
+      .catch((error) => pintarDatos(error));
+  }, 2000);
 };
 
 /**
